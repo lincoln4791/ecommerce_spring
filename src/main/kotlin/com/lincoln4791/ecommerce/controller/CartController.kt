@@ -2,6 +2,7 @@ package com.lincoln4791.ecommerce.controller
 
 import com.lincoln4791.ecommerce.model.requests.AddToCartRequest
 import com.lincoln4791.ecommerce.service.CartService
+import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -9,9 +10,9 @@ import org.springframework.web.bind.annotation.*
 class CartController(private val service: CartService) {
 
     @PostMapping("/add")
-    fun addToCart(@RequestBody req: AddToCartRequest) =
-        service.addToCart(req.userId, req.productId, req.quantity)
+    fun addToCart(authentication: Authentication, @RequestBody req: AddToCartRequest) =
+        service.addToCart(authentication,req.productId, req.quantity)
 
-    @GetMapping("/{userId}")
-    fun getCart(@PathVariable userId: Long) = service.getUserCart(userId)
+    @GetMapping("/items")
+    fun getCart(authentication: Authentication) = service.getUserCart(authentication)
 }

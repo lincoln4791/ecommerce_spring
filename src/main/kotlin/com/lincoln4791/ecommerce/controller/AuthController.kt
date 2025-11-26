@@ -41,7 +41,7 @@ class AuthController(
             password = passwordEncoder.encode(req.password)
         )
         userRepo.save(user)
-        val token = jwtUtils.generateToken(user.name,user.email)
+        val token = jwtUtils.generateToken(user.email)
         val response = LoginResponse(
             name = user.name,
             phone = user.phone,
@@ -59,13 +59,23 @@ class AuthController(
     @PostMapping("/login")
     fun login(@RequestBody req: LoginRequest): ResponseEntity<Any> {
         val user = userRepo.findByEmail(req.email)
-            ?: return ResponseEntity.status(401).body(mapOf("error" to "Invalid credentials"))
+            ?:return ResponseEntity.ok(BaseResponse(
+                status_code=401,
+                message=ApiStatus.Success.name,
+                errors = "Invalid Credential!",
+                data =  null
+            ))
 
         if (!passwordEncoder.matches(req.password, user.password)) {
-            return ResponseEntity.status(401).body(mapOf("error" to "Invalid credentials"))
+            return ResponseEntity.ok(BaseResponse(
+                status_code=401,
+                message=ApiStatus.Success.name,
+                errors = "Invalid Credential!",
+                data =  null
+            ))
         }
 
-        val token = jwtUtils.generateToken(user.name,user.email)
+        val token = jwtUtils.generateToken(user.email)
         val response = LoginResponse(
             name = user.name,
             phone = user.phone,

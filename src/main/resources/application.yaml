@@ -26,5 +26,9 @@ logging:
   file:
     name: logs/app.log
 
+jwt:
+  secret: "x9N7f2pQ8a3L6vZ1t4M0cB7sP2dF9jK8hU3kL0mN1qR5sT6vW8yX2pZ4hC3dE7" # 64+ chars (512 bits)
+  expiration: 86400000
+
 server:
   port: 8080

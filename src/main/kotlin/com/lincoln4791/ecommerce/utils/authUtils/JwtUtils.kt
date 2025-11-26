@@ -11,7 +11,7 @@ class JwtUtils {
     private val secret = Keys.secretKeyFor(SignatureAlgorithm.HS512) // 👈 secure 512-bit key
     private val expirationMs = 86400000 // 1 day
 
-    fun generateToken(username: String, email:String): String {
+    fun generateToken(email:String): String {
         val now = Date()
         val expiryDate = Date(now.time + expirationMs)
 
