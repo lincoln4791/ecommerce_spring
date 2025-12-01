@@ -7,7 +7,7 @@ import jakarta.persistence.*
 data class Product(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, name = "product_id")
     val productId: String,
     val name: String,
     var price: Double,

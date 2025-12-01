@@ -12,4 +12,12 @@ class GlobalExceptionHandler {
         val body = mapOf("error" to ex.message!!)
         return ResponseEntity(body, HttpStatus.BAD_REQUEST)
     }
+
+    @ExceptionHandler(UniqueConstraintException::class)
+    fun uniqueConstraintException(ex: UniqueConstraintException): ResponseEntity<Map<String, String>> {
+        val body = mapOf("error" to ex.message!!)
+        return ResponseEntity(body, HttpStatus.BAD_REQUEST)
+    }
+
+
 }

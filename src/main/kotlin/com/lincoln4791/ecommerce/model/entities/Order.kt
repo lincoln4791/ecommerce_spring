@@ -15,6 +15,11 @@ data class Order(
     @OneToMany(mappedBy = "order", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonManagedReference
     val items: MutableList<OrderItem> = mutableListOf(),
-    val deliveryStatus: String=OrderStatus.Pending.name,
+
+    @OneToMany(mappedBy = "order", cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JsonManagedReference
+    val deliveryTrackingItems: MutableList<DeliveryTracking> = mutableListOf(),
+
+    var deliveryStatus: String=OrderStatus.Pending.name,
     val paymentMethod: String=PaymentMethod.COD.name,
 )
