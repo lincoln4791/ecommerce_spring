@@ -1,3 +1,4 @@
+/*
 package com.lincoln4791.ecommerce.utils.authUtils
 
 import com.lincoln4791.ecommerce.repository.UserRepository
@@ -38,3 +39,4 @@ class JwtFilter(
         filterChain.doFilter(request, response)
     }
 }
+*/

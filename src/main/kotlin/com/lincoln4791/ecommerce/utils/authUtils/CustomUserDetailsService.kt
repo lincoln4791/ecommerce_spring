@@ -1,5 +1,6 @@
 package com.lincoln4791.ecommerce.utils.authUtils
 import com.lincoln4791.ecommerce.repository.UserRepository
+import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
@@ -17,7 +18,7 @@ class CustomUserDetailsService(
         return org.springframework.security.core.userdetails.User(
             user.email,
             user.password,
-            emptyList() // authorities, later we can add roles
+            listOf(SimpleGrantedAuthority("ROLE_${user.role}"))
         )
     }
 }

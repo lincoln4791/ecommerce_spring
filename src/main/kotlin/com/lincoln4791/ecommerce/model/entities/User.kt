@@ -1,5 +1,6 @@
 package com.lincoln4791.ecommerce.model.entities
 
+import com.lincoln4791.ecommerce.model.enums.Role
 import jakarta.persistence.*
 
 @Entity
@@ -16,5 +17,8 @@ data class User(
     @Column(unique = true)
     val phone: String,
 
-    val password: String
+    val password: String,
+
+    @Enumerated(EnumType.STRING)
+    val role : Role? = Role.USER
 )

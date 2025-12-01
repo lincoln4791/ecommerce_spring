@@ -2,6 +2,7 @@ package com.lincoln4791.ecommerce.controller
 
 import com.lincoln4791.ecommerce.model.entities.User
 import com.lincoln4791.ecommerce.model.enums.ApiStatus
+import com.lincoln4791.ecommerce.model.enums.Role
 import com.lincoln4791.ecommerce.model.requests.LoginRequest
 import com.lincoln4791.ecommerce.model.requests.SignupRequest
 import com.lincoln4791.ecommerce.model.responses.BaseResponse
@@ -38,15 +39,17 @@ class AuthController(
             name = req.name,
             email = req.email,
             phone = req.phone,
-            password = passwordEncoder.encode(req.password)
+            password = passwordEncoder.encode(req.password),
+            role = Role.USER
         )
         userRepo.save(user)
-        val token = jwtUtils.generateToken(user.email)
+        val token = jwtUtils.generateToken(user)
         val response = LoginResponse(
             name = user.name,
             phone = user.phone,
             email = user.email,
-            token = token
+            token = token,
+            role = user.role
         )
         return ResponseEntity.ok(BaseResponse(
             status_code=200,
@@ -75,12 +78,13 @@ class AuthController(
             ))
         }
 
-        val token = jwtUtils.generateToken(user.email)
+        val token = jwtUtils.generateToken(user)
         val response = LoginResponse(
             name = user.name,
             phone = user.phone,
             email = user.email,
-            token = token
+            token = token,
+            role = user.role
         )
 
         return ResponseEntity.ok(BaseResponse(

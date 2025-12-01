@@ -1,5 +1,7 @@
 package com.lincoln4791.ecommerce.utils.authUtils
 
+import com.lincoln4791.ecommerce.model.entities.User
+import com.lincoln4791.ecommerce.model.enums.Role
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import io.jsonwebtoken.security.Keys
@@ -15,12 +17,13 @@ class JwtUtils(
 
     private val key = Keys.hmacShaKeyFor(Base64.getDecoder().decode(secretKey))
 
-    fun generateToken(email: String): String {
+    fun generateToken(user: User): String {
         val now = Date()
         val expiryDate = Date(now.time + expirationMs)
 
         return Jwts.builder()
-            .setSubject(email)
+            .setSubject(user.email)
+            .claim("role", user.role?.name?: Role.USER)   // <-- HERE
             .setIssuedAt(now)
             .setExpiration(expiryDate)
             .signWith(key, SignatureAlgorithm.HS512)
