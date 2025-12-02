@@ -103,7 +103,7 @@ class AuthController(
     }
 
     @PostMapping("/refresh")
-    fun refreshToken(@RequestBody request: Map<String, String>): ResponseEntity<Any> {
+    fun refreshToken(@RequestBody request: Map<String, String>): BaseResponse<Any> {
         val refreshToken = refreshTokenService.getByToken(request["refresh_token"]!!)
         refreshTokenService.verifyExpiration(refreshToken)
 
@@ -111,9 +111,14 @@ class AuthController(
 
         // Optional: generate new refresh token here (rotation)
 
-        return ResponseEntity.ok(mapOf(
-            "access_token" to newAccessToken
-        ))
+        return BaseResponse(
+            status_code = 200,
+            message = ApiStatus.Success.name,
+            errors = null,
+            data = mapOf(
+                "access_token" to newAccessToken
+            )
+        )
     }
 
 }
