@@ -7,5 +7,6 @@ data class LoginResponse(
     val phone : String,
     val email: String,
     val token: String,
+    val refreshToken: String?,
     val role :Role?
 )

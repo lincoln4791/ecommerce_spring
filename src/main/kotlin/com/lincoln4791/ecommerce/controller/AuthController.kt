@@ -8,6 +8,7 @@ import com.lincoln4791.ecommerce.model.requests.SignupRequest
 import com.lincoln4791.ecommerce.model.responses.BaseResponse
 import com.lincoln4791.ecommerce.model.responses.LoginResponse
 import com.lincoln4791.ecommerce.repository.UserRepository
+import com.lincoln4791.ecommerce.service.RefreshTokenService
 import com.lincoln4791.ecommerce.utils.authUtils.JwtUtils
 import org.springframework.http.ResponseEntity
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -21,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController
 class AuthController(
     private val userRepo: UserRepository,
     private val passwordEncoder: PasswordEncoder,
-    private val jwtUtils: JwtUtils
+    private val jwtUtils: JwtUtils,
+    private val refreshTokenService: RefreshTokenService
 ) {
 
     @PostMapping("/signup")
@@ -49,7 +51,8 @@ class AuthController(
             phone = user.phone,
             email = user.email,
             token = token,
-            role = user.role
+            role = user.role,
+            refreshToken = null
         )
         return ResponseEntity.ok(BaseResponse(
             status_code=200,
@@ -79,12 +82,15 @@ class AuthController(
         }
 
         val token = jwtUtils.generateToken(user)
+        refreshTokenService.deleteByUserId(user.id)
+        val refreshToken = refreshTokenService.createRefreshToken(userId = user.id)
         val response = LoginResponse(
             name = user.name,
             phone = user.phone,
             email = user.email,
             token = token,
-            role = user.role
+            role = user.role,
+            refreshToken = refreshToken.token
         )
 
         return ResponseEntity.ok(BaseResponse(
@@ -95,4 +101,19 @@ class AuthController(
         ))
 
     }
+
+    @PostMapping("/refresh")
+    fun refreshToken(@RequestBody request: Map<String, String>): ResponseEntity<Any> {
+        val refreshToken = refreshTokenService.getByToken(request["refresh_token"]!!)
+        refreshTokenService.verifyExpiration(refreshToken)
+
+        val newAccessToken = jwtUtils.generateToken(refreshToken.user)
+
+        // Optional: generate new refresh token here (rotation)
+
+        return ResponseEntity.ok(mapOf(
+            "access_token" to newAccessToken
+        ))
+    }
+
 }

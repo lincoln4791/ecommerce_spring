@@ -44,7 +44,7 @@ class SecurityConfig(
                 auth
                     /*.requestMatchers("/auth/signup", "/auth/login").permitAll()   // PUBLIC
                     .anyRequest().authenticated()    */                            // PROTECTED
-                    .requestMatchers("/auth/login", "/auth/signup").permitAll()
+                    .requestMatchers("/auth/login", "/auth/signup","/auth/refresh").permitAll()
 
                     // Only admin can add product
                     //.requestMatchers(HttpMethod.POST, "/products/add").hasRole("ADMIN")
