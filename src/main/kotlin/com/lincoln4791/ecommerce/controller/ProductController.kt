@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.*
 class ProductController(private val service: ProductService) {
 
     @GetMapping
-    fun getAll() = service.getAll()
+    fun getAll(
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "10") size: Int,
+        @RequestParam(defaultValue = "id,asc") sort: String
+    ) = service.getAll(page,size,sort)
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")

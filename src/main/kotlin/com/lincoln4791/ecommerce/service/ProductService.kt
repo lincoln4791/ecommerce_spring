@@ -5,20 +5,23 @@ import com.lincoln4791.ecommerce.model.enums.ApiStatus
 import com.lincoln4791.ecommerce.model.requests.AddProductRequest
 import com.lincoln4791.ecommerce.model.responses.BaseResponse
 import com.lincoln4791.ecommerce.repository.ProductRepository
+import com.lincoln4791.ecommerce.utils.Utils.createPageable
+import com.lincoln4791.ecommerce.utils.toPageResponse
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 
 @Service
 class ProductService(private val repo: ProductRepository) {
 
-    fun getAll(): ResponseEntity<Any> {
-        val items = repo.findAll()
+    fun getAll(page:Int,size:Int,sort:String): ResponseEntity<Any> {
+        val pageable = createPageable(page, size, sort)
+        val pageResult = repo.findAll(pageable)
         return ResponseEntity.ok(
             BaseResponse(
                 status_code = 200,
                 message = ApiStatus.Success.name,
                 errors = null,
-                data = items
+                data = pageResult.toPageResponse()
             )
         )
     }

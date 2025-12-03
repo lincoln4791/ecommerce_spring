@@ -1,5 +1,7 @@
 package com.lincoln4791.ecommerce.service
 
+import com.lincoln4791.ecommerce.exceptions.ProductNotFoundException
+import com.lincoln4791.ecommerce.exceptions.UserNotFoundException
 import com.lincoln4791.ecommerce.model.entities.Cart
 import com.lincoln4791.ecommerce.model.enums.ApiStatus
 import com.lincoln4791.ecommerce.model.responses.BaseResponse
@@ -18,15 +20,10 @@ class CartService(
 ) {
     fun addToCart(authentication: Authentication, productId: Long, qty: Int): ResponseEntity<Any> {
         val product = productRepo.findById(productId)
-            .orElseThrow { RuntimeException("Product not found") }
+            .orElseThrow {  ProductNotFoundException("Product not found") }
 
         val email = authentication.name
-        val user = userRepo.findByEmail(email) ?: return ResponseEntity.ok(BaseResponse(
-            status_code=401,
-            message= ApiStatus.Failed.name,
-            errors = "User not found",
-            data =  null
-        ))
+        val user = userRepo.findByEmail(email) ?: throw UserNotFoundException("User Not Found")
 
         val savedItem = cartRepo.save(
             Cart(
