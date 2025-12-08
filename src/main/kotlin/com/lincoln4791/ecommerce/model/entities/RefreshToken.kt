@@ -16,6 +16,6 @@ data class RefreshToken(
     @Column(nullable = false, unique = true)
     val token: String,
 
-    @Column(nullable = false)
+    @Column(name = "expiry_date",nullable = false)
     val expiryDate: Instant
 )

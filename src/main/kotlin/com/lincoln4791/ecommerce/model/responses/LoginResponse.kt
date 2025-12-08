@@ -1,6 +1,6 @@
 package com.lincoln4791.ecommerce.model.responses
 
-import com.lincoln4791.ecommerce.model.enums.Role
+import com.lincoln4791.ecommerce.model.enums.RoleEnum
 
 data class LoginResponse(
     val name : String,
@@ -8,5 +8,5 @@ data class LoginResponse(
     val email: String,
     val token: String,
     val refreshToken: String?,
-    val role :Role?
+    val role :RoleEnum?
 )

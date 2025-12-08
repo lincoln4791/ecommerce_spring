@@ -1,6 +1,6 @@
 package com.lincoln4791.ecommerce.model.enums
 
-enum class OrderStatus {
+enum class OrderStatusEnum {
     Pending,
     Packed,
     Shipped,

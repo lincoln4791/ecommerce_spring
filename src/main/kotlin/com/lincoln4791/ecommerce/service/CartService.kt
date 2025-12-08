@@ -1,9 +1,12 @@
 package com.lincoln4791.ecommerce.service
 
+import com.lincoln4791.ecommerce.exceptions.EmptyCartException
 import com.lincoln4791.ecommerce.exceptions.ProductNotFoundException
 import com.lincoln4791.ecommerce.exceptions.UserNotFoundException
 import com.lincoln4791.ecommerce.model.entities.Cart
-import com.lincoln4791.ecommerce.model.enums.ApiStatus
+import com.lincoln4791.ecommerce.model.enums.ApiStatusEnum
+import com.lincoln4791.ecommerce.model.enums.CartUpdateEnum
+import com.lincoln4791.ecommerce.model.requests.CartUpdateRequest
 import com.lincoln4791.ecommerce.model.responses.BaseResponse
 import com.lincoln4791.ecommerce.repository.CartRepository
 import com.lincoln4791.ecommerce.repository.ProductRepository
@@ -19,33 +22,94 @@ class CartService(
     private val userRepo: UserRepository
 ) {
     fun addToCart(authentication: Authentication, productId: Long, qty: Int): ResponseEntity<Any> {
+
         val product = productRepo.findById(productId)
-            .orElseThrow {  ProductNotFoundException("Product not found") }
+            .orElseThrow { ProductNotFoundException("Product not found") }
 
-        val email = authentication.name
-        val user = userRepo.findByEmail(email) ?: throw UserNotFoundException("User Not Found")
+        val user = userRepo.findByEmail(authentication.name)
+            ?: throw UserNotFoundException("User Not Found")
 
-        val savedItem = cartRepo.save(
-            Cart(
-                userId = user.id,
-                product = product,
-                quantity = qty,
+        // Check if item already exists
+        val existingItem = cartRepo.findByUserIdAndProductId(user.id, productId)
+
+        val savedItem = if (existingItem == null) {
+
+            // Create new cart item
+            cartRepo.save(
+                Cart(
+                    userId = user.id,
+                    product = product,
+                    quantity = qty
+                )
+            )
+
+        } else {
+
+            // Increase quantity
+            existingItem.quantity += qty
+            cartRepo.save(existingItem)
+        }
+
+        return ResponseEntity.ok(
+            BaseResponse(
+                status_code = 200,
+                message = ApiStatusEnum.Success.name,
+                errors = null,
+                data = savedItem
             )
         )
-        return ResponseEntity.ok(BaseResponse(
-            status_code=200,
-            message= ApiStatus.Success.name,
-            errors = null,
-            data =  savedItem
-        ))
     }
+
+
+    fun removeFromCart(
+        authentication: Authentication,
+        cartUpdateRequest: CartUpdateRequest
+    ): ResponseEntity<Any> {
+
+        val email = authentication.name
+        val user = userRepo.findByEmail(email)
+            ?: throw UserNotFoundException("User Not Found")
+
+        val product = productRepo.findById(cartUpdateRequest.productId)
+            .orElseThrow { ProductNotFoundException("Product not found") }
+
+        val cartItem = cartRepo.findByUserIdAndProductId(user.id, cartUpdateRequest.productId)
+            ?: throw EmptyCartException("Item not found in cart")
+
+        when(cartUpdateRequest.action) {
+            CartUpdateEnum.DELETE.name -> {
+                cartRepo.delete(cartItem)
+            }
+
+            CartUpdateEnum.DECREASE.name -> {
+                if (cartItem.quantity <= cartUpdateRequest.qty) {
+                    cartRepo.delete(cartItem)
+                } else {
+                    cartItem.quantity -= cartUpdateRequest.qty
+                    cartRepo.save(cartItem)
+                }
+            }
+
+            else -> throw IllegalArgumentException("Invalid action: ${cartUpdateRequest.action}")
+        }
+
+        return ResponseEntity.ok(
+            BaseResponse(
+                status_code = 200,
+                message = ApiStatusEnum.Success.name,
+                errors = null,
+                data = cartItem
+            )
+        )
+    }
+
 
     fun getUserCart(authentication: Authentication) : ResponseEntity<Any> {
 
         val email = authentication.name
         val user = userRepo.findByEmail(email)?:return ResponseEntity.ok(BaseResponse(
             status_code=401,
-            message= ApiStatus.Failed.name,
+            message= ApiStatusEnum.Failed.name,
             errors = "User not found",
             data =  null
         ))
@@ -55,7 +119,7 @@ class CartService(
 
         return ResponseEntity.ok(BaseResponse(
             status_code=200,
-            message= ApiStatus.Success.name,
+            message= ApiStatusEnum.Success.name,
             errors = null,
             data =  items
         ))

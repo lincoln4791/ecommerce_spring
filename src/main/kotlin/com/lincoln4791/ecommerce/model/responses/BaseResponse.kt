@@ -1,8 +1,12 @@
 package com.lincoln4791.ecommerce.model.responses
 
-data class BaseResponse<T>(
-    val status_code: Int,
-    val message: String,
-    val errors: String? = null,
-    val data: T? = null
-)
+import com.fasterxml.jackson.annotation.JsonCreator
+import com.fasterxml.jackson.annotation.JsonProperty
+import java.io.Serializable
+
+data class BaseResponse<T> @JsonCreator constructor(
+    @JsonProperty("status_code") val status_code: Int,
+    @JsonProperty("message") val message: String,
+    @JsonProperty("errors") val errors: Any?,
+    @JsonProperty("data") val data: T?
+) : Serializable

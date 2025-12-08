@@ -10,6 +10,6 @@ fun <T> Page<T>.toPageResponse(): PageResponse<T> {
         size = this.size,
         total = this.totalElements,
         totalPages = this.totalPages,
-        isLast = this.isLast
+        last = this.isLast
     )
 }

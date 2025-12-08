@@ -7,6 +7,7 @@ import org.springframework.validation.BindException
 import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
+import kotlin.IllegalArgumentException
 
 @RestControllerAdvice
 class GlobalExceptionHandler {
@@ -16,10 +17,34 @@ class GlobalExceptionHandler {
         return ResponseEntity(body, HttpStatus.BAD_REQUEST)
     }
 
+    @ExceptionHandler(IllegalArgumentException::class)
+    fun handleEmptyCart(ex: IllegalArgumentException): ResponseEntity<Map<String, String>> {
+        val body = mapOf("error" to ex.message!!)
+        return ResponseEntity(body, HttpStatus.BAD_REQUEST)
+    }
+
     @ExceptionHandler(UserNotFoundException::class)
     fun handleUserNotFound(ex: UserNotFoundException): ResponseEntity<Map<String, String>> {
         val body = mapOf("error" to ex.message!!)
         return ResponseEntity(body, HttpStatus.BAD_REQUEST)
+    }
+
+    @ExceptionHandler(OrderStatusNotFoundException::class)
+    fun handle(ex: OrderStatusNotFoundException): ResponseEntity<Map<String, String>> {
+        val body = mapOf("error" to ex.message!!)
+        return ResponseEntity(body, HttpStatus.BAD_REQUEST)
+    }
+
+    @ExceptionHandler(OrderNotFoundException::class)
+    fun handle(ex: OrderNotFoundException): ResponseEntity<Map<String, String>> {
+        val body = mapOf("error" to ex.message!!)
+        return ResponseEntity(body, HttpStatus.BAD_REQUEST)
+    }
+
+    @ExceptionHandler(Unauthorized::class)
+    fun handle(ex: Unauthorized): ResponseEntity<Map<String, String>> {
+        val body = mapOf("error" to ex.message!!)
+        return ResponseEntity(body, HttpStatus.UNAUTHORIZED)
     }
 
     @ExceptionHandler(ProductNotFoundException::class)

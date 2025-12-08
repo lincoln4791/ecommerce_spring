@@ -1,25 +1,17 @@
 package com.lincoln4791.ecommerce.service
 
-import com.lincoln4791.ecommerce.exceptions.ProductNotFoundException
-import com.lincoln4791.ecommerce.exceptions.UserNotFoundException
-import com.lincoln4791.ecommerce.model.entities.Cart
 import com.lincoln4791.ecommerce.model.entities.User
-import com.lincoln4791.ecommerce.model.enums.ApiStatus
-import com.lincoln4791.ecommerce.model.enums.Role
+import com.lincoln4791.ecommerce.model.enums.ApiStatusEnum
+import com.lincoln4791.ecommerce.model.enums.RoleEnum
 import com.lincoln4791.ecommerce.model.requests.LoginRequest
 import com.lincoln4791.ecommerce.model.requests.SignupRequest
 import com.lincoln4791.ecommerce.model.responses.BaseResponse
 import com.lincoln4791.ecommerce.model.responses.LoginResponse
-import com.lincoln4791.ecommerce.repository.CartRepository
-import com.lincoln4791.ecommerce.repository.ProductRepository
 import com.lincoln4791.ecommerce.repository.UserRepository
 import com.lincoln4791.ecommerce.utils.authUtils.JwtUtils
 import org.springframework.http.ResponseEntity
-import org.springframework.security.core.Authentication
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
 
 @Service
 class AuthService(
@@ -32,7 +24,7 @@ class AuthService(
         if (userRepo.existsByEmail(req.email)) {
             return ResponseEntity.ok(BaseResponse(
                 status_code=200,
-                message=ApiStatus.Failed.name,
+                message=ApiStatusEnum.Failed.name,
                 errors = "User Already Exists",
                 data =  null
             ))
@@ -43,7 +35,7 @@ class AuthService(
             email = req.email,
             phone = req.phone,
             password = passwordEncoder.encode(req.password),
-            role = Role.USER
+            role = RoleEnum.USER
         )
         userRepo.save(user)
         val token = jwtUtils.generateToken(user)
@@ -57,7 +49,7 @@ class AuthService(
         )
         return ResponseEntity.ok(BaseResponse(
             status_code=200,
-            message=ApiStatus.Success.name,
+            message=ApiStatusEnum.Success.name,
             errors = null,
             data =  response
         ))
@@ -65,10 +57,11 @@ class AuthService(
 
 
     fun login(req: LoginRequest): ResponseEntity<Any> {
+        print("login called")
         val user = userRepo.findByEmail(req.email)
             ?:return ResponseEntity.ok(BaseResponse(
                 status_code=401,
-                message=ApiStatus.Success.name,
+                message=ApiStatusEnum.Success.name,
                 errors = "Invalid Credential!",
                 data =  null
             ))
@@ -76,7 +69,7 @@ class AuthService(
         if (!passwordEncoder.matches(req.password, user.password)) {
             return ResponseEntity.ok(BaseResponse(
                 status_code=401,
-                message=ApiStatus.Success.name,
+                message=ApiStatusEnum.Failed.name,
                 errors = "Invalid Credential!",
                 data =  null
             ))
@@ -96,7 +89,7 @@ class AuthService(
 
         return ResponseEntity.ok(BaseResponse(
             status_code=200,
-            message=ApiStatus.Success.name,
+            message=ApiStatusEnum.Success.name,
             errors = null,
             data =  response
         ))
@@ -113,7 +106,7 @@ class AuthService(
 
         return BaseResponse(
             status_code = 200,
-            message = ApiStatus.Success.name,
+            message = ApiStatusEnum.Success.name,
             errors = null,
             data = mapOf(
                 "access_token" to newAccessToken

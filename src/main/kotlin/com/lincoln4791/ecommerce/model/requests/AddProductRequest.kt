@@ -5,8 +5,8 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
 
 data class AddProductRequest(
-    @field:NotBlank(message = "Product ID is required")
-    val productId: String? = null,
+    @field:NotNull(message = "Product ID is required")
+    val productId: Long? = null,
 
     @field:NotBlank(message = "Product name is required")
     val name: String? = null,

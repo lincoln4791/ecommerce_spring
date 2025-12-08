@@ -1,5 +1,5 @@
 package com.lincoln4791.ecommerce.model.enums
 
-enum class Role{
+enum class RoleEnum{
     ADMIN, USER
 }

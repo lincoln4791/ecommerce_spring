@@ -2,6 +2,16 @@ spring:
   application:
     name: ecommerce
 
+  redis:
+    #host: localhost
+    host: redis
+    port: 6379
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 6000ms
+
   flyway:
     enabled: true
     fail-on-unsupported-database: false
@@ -20,6 +30,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
+      naming:
+        #implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
     show-sql: true
     properties:
       hibernate:

@@ -1,13 +1,14 @@
 package com.lincoln4791.ecommerce.service
 
+import com.lincoln4791.ecommerce.exceptions.OrderNotFoundException
+import com.lincoln4791.ecommerce.exceptions.OrderStatusNotFoundException
 import com.lincoln4791.ecommerce.exceptions.UniqueConstraintException
 import com.lincoln4791.ecommerce.model.entities.DeliveryTracking
 import com.lincoln4791.ecommerce.model.entities.Order
 import com.lincoln4791.ecommerce.model.entities.OrderItem
-import com.lincoln4791.ecommerce.model.entities.Product
-import com.lincoln4791.ecommerce.model.enums.ApiStatus
-import com.lincoln4791.ecommerce.model.enums.OrderStatus
-import com.lincoln4791.ecommerce.model.enums.PaymentMethod
+import com.lincoln4791.ecommerce.model.enums.ApiStatusEnum
+import com.lincoln4791.ecommerce.model.enums.OrderStatusEnum
+import com.lincoln4791.ecommerce.model.enums.PaymentMethodEnum
 import com.lincoln4791.ecommerce.model.requests.UpdateDeliveryStatusRequest
 import com.lincoln4791.ecommerce.model.responses.BaseResponse
 import com.lincoln4791.ecommerce.repository.*
@@ -28,14 +29,14 @@ class OrderService(
         val email = authentication.name
         val user = userRepo.findByEmail(email)
             ?: return ResponseEntity.status(401).body(
-                BaseResponse(401, ApiStatus.Failed.name, "User not found", null)
+                BaseResponse(401, ApiStatusEnum.Failed.name, "User not found", null)
             )
 
 
         val cartItems = cartRepo.findByUserId(user.id)
         if (cartItems.isEmpty()) {
             return ResponseEntity.status(400).body(
-                BaseResponse(400, ApiStatus.Failed.name, "Cart is empty", null)
+                BaseResponse(400, ApiStatusEnum.Failed.name, "Cart is empty", null)
             )
         }
 
@@ -45,8 +46,8 @@ class OrderService(
         val order = Order(
             userId = user.id,
             totalAmount = total,
-            deliveryStatus = OrderStatus.Pending.name,
-            paymentMethod = PaymentMethod.COD.name
+            deliveryStatus = OrderStatusEnum.Pending.name,
+            paymentMethod = PaymentMethodEnum.COD.name
         )
 
         // 2️⃣ Add items to order.items list
@@ -75,7 +76,7 @@ class OrderService(
 
         // 5️⃣ Return the saved order with items populated
         return ResponseEntity.ok(
-            BaseResponse(200, ApiStatus.Success.name, null, savedOrder)
+            BaseResponse(200, ApiStatusEnum.Success.name, null, savedOrder)
         )
     }
 
@@ -88,7 +89,7 @@ class OrderService(
         return ResponseEntity.ok(
             BaseResponse(
                 status_code = 200,
-                message = ApiStatus.Success.name,
+                message = ApiStatusEnum.Success.name,
                 errors = null,
                 data = items
             )
@@ -100,67 +101,76 @@ class OrderService(
         updateDeliveryStatusRequest: UpdateDeliveryStatusRequest
     ) : ResponseEntity<Any> {
         val order = orderRepo.findById(updateDeliveryStatusRequest.order_id)
-            .orElseThrow { RuntimeException("No Order Found") }
+            .orElseThrow { OrderNotFoundException("No Order Found") }
 
-        if(updateDeliveryStatusRequest.status==OrderStatus.Canceled.name || updateDeliveryStatusRequest.status== OrderStatus.Failed.name){
-            if(order.deliveryStatus==OrderStatus.Canceled.name || order.deliveryStatus==OrderStatus.Failed.name){
-                return ResponseEntity.ok(
-                    BaseResponse(
-                        status_code = 409,
-                        message = ApiStatus.Failed.name,
-                        errors = "Order Already Canceled/Failed",
-                        data = null
+        val isExists = OrderStatusEnum.entries.any{it.name==updateDeliveryStatusRequest.status}
+
+        if(isExists){
+            if(updateDeliveryStatusRequest.status==OrderStatusEnum.Canceled.name || updateDeliveryStatusRequest.status== OrderStatusEnum.Failed.name){
+                if(order.deliveryStatus==OrderStatusEnum.Canceled.name || order.deliveryStatus==OrderStatusEnum.Failed.name){
+                    return ResponseEntity.ok(
+                        BaseResponse(
+                            status_code = 409,
+                            message = ApiStatusEnum.Failed.name,
+                            errors = "Order Already Canceled/Failed",
+                            data = null
+                        )
                     )
-                )
+                }
+                else{
+                    order.deliveryStatus = updateDeliveryStatusRequest.status
+                    val trackingEvent = DeliveryTracking(
+                        order = order,
+                        status = updateDeliveryStatusRequest.status
+                    )
+                    order.deliveryTrackingItems.add(trackingEvent)
+                    orderRepo.save(order)
+                    order.items.forEach {
+                        val prod = productRepo.findByProductId(it.product.productId)
+                            ?: throw RuntimeException("Product not found! productId=${it.product.productId}")
+
+                        prod.stock = prod.stock + it.quantity   // restore stock
+                        productRepo.save(prod)
+                    }
+                    return ResponseEntity.ok(
+                        BaseResponse(
+                            status_code = 200,
+                            message = ApiStatusEnum.Success.name,
+                            errors = null,
+                            data = order
+                        )
+                    )
+                }
+
             }
-            else{
+            else {
                 order.deliveryStatus = updateDeliveryStatusRequest.status
                 val trackingEvent = DeliveryTracking(
                     order = order,
                     status = updateDeliveryStatusRequest.status
                 )
                 order.deliveryTrackingItems.add(trackingEvent)
-                orderRepo.save(order)
-                order.items.forEach {
-                    val prod = productRepo.findByProductId(it.product.productId)
-                        ?: throw RuntimeException("Product not found! productId=${it.product.productId}")
-
-                    prod.stock = prod.stock + it.quantity   // restore stock
-                    productRepo.save(prod)
+                try {
+                    orderRepo.save(order)
+                    return ResponseEntity.ok(
+                        BaseResponse(
+                            status_code = 200,
+                            message = ApiStatusEnum.Success.name,
+                            errors = null,
+                            data = order
+                        )
+                    )
+                } catch (ex: DataIntegrityViolationException) {
+                    throw UniqueConstraintException("Unique Constrains Failed")
                 }
-                return ResponseEntity.ok(
-                    BaseResponse(
-                        status_code = 200,
-                        message = ApiStatus.Failed.name,
-                        errors = null,
-                        data = order
-                    )
-                )
-            }
 
-        }
-        else {
-            order.deliveryStatus = updateDeliveryStatusRequest.status
-            val trackingEvent = DeliveryTracking(
-                order = order,
-                status = updateDeliveryStatusRequest.status
-            )
-            order.deliveryTrackingItems.add(trackingEvent)
-            try {
-                orderRepo.save(order)
-                return ResponseEntity.ok(
-                    BaseResponse(
-                        status_code = 200,
-                        message = ApiStatus.Success.name,
-                        errors = null,
-                        data = order
-                    )
-                )
-            } catch (ex: DataIntegrityViolationException) {
-                throw UniqueConstraintException("Unique Constrains Failed")
             }
-
         }
+        else{
+            throw OrderStatusNotFoundException("Order Status ${updateDeliveryStatusRequest.status} is Invalid")
+        }
+
+
 
 
     }

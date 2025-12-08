@@ -1,8 +1,8 @@
 package com.lincoln4791.ecommerce.model.entities
 
 import com.fasterxml.jackson.annotation.JsonManagedReference
-import com.lincoln4791.ecommerce.model.enums.OrderStatus
-import com.lincoln4791.ecommerce.model.enums.PaymentMethod
+import com.lincoln4791.ecommerce.model.enums.OrderStatusEnum
+import com.lincoln4791.ecommerce.model.enums.PaymentMethodEnum
 import jakarta.persistence.*
 
 @Entity
@@ -20,6 +20,6 @@ data class Order(
     @JsonManagedReference
     val deliveryTrackingItems: MutableList<DeliveryTracking> = mutableListOf(),
 
-    var deliveryStatus: String=OrderStatus.Pending.name,
-    val paymentMethod: String=PaymentMethod.COD.name,
+    var deliveryStatus: String=OrderStatusEnum.Pending.name,
+    val paymentMethod: String=PaymentMethodEnum.COD.name,
 )

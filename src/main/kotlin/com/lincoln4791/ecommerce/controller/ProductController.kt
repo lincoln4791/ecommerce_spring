@@ -4,6 +4,7 @@ import com.lincoln4791.ecommerce.model.entities.Product
 import com.lincoln4791.ecommerce.model.requests.AddProductRequest
 import com.lincoln4791.ecommerce.service.ProductService
 import jakarta.validation.Valid
+import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 
@@ -16,7 +17,7 @@ class ProductController(private val service: ProductService) {
         @RequestParam(defaultValue = "0") page: Int,
         @RequestParam(defaultValue = "10") size: Int,
         @RequestParam(defaultValue = "id,asc") sort: String
-    ) = service.getAll(page,size,sort)
+    ) = ResponseEntity.ok(service.getAll(page,size,sort))
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
