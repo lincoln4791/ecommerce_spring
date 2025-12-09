@@ -11,6 +11,9 @@ data class AddProductRequest(
     @field:NotNull(message = "Category ID is required")
     val categoryId: Long? = null,
 
+    @field:NotNull(message = "Model ID is required")
+    val modelId: Long? = null,
+
     @field:NotBlank(message = "Product name is required")
     val name: String? = null,
 

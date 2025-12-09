@@ -48,7 +48,8 @@ class ProductService(private val repo: ProductRepository) {
                 name = req.name!!,
                 price = req.price!!,
                 stock = req.stock!!,
-                categoryId = req.categoryId!!
+                categoryId = req.categoryId!!,
+                modelId = req.modelId!!
             )
             repo.save(product)
         }

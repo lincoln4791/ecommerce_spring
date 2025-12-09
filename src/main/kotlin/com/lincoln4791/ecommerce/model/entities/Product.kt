@@ -10,6 +10,7 @@ data class Product(
     @Column(unique = true, nullable = false, name = "product_id")
     val productId: Long,
     val categoryId :Long,
+    val modelId :Long,
     val name: String,
     var price: Double,
     var stock: Int
