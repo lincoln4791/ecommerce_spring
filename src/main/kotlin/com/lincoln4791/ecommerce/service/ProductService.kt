@@ -15,27 +15,22 @@ import org.springframework.stereotype.Service
 class ProductService(private val repo: ProductRepository) {
 
     //@Cacheable("product")
-    //fun getAll(page:Int,size:Int,sort:String): ResponseEntity<Any> {
-    fun getAll(page:Int,size:Int,sort:String): BaseResponse<Any> {
+    fun getAll(page: Int, size: Int, sort: String, categoryId: List<Long>?): BaseResponse<Any> {
         print("get from db")
         val pageable = createPageable(page, size, sort)
-        val pageResult = repo.findAll(pageable)
-        /*return ResponseEntity.ok(
-            BaseResponse(
-                status_code = 200,
-                message = ApiStatus.Success.name,
-                errors = null,
-                data = pageResult.toPageResponse()
-            )
-        )*/
+        val pageResult = if (categoryId == null) {
+            repo.findAll(pageable)
+        } else {
+            repo.findAllByCategoryIdIn(categoryId, pageable)
+        }
         return BaseResponse(
-                status_code = 200,
-                message = ApiStatusEnum.Success.name,
-                errors = null,
-                data = pageResult.toPageResponse()
-            )
-
+            status_code = 200,
+            message = ApiStatusEnum.Success.name,
+            errors = null,
+            data = pageResult.toPageResponse()
+        )
     }
+
     //@CachePut(cacheNames = ["product"], key = "#product.id")
     @CacheEvict(value = ["product"], allEntries = true)
     fun add(req: AddProductRequest): ResponseEntity<Any> {
@@ -49,10 +44,11 @@ class ProductService(private val repo: ProductRepository) {
             repo.save(updated)
         } else {
             val product = Product(
-                productId = req.productId!!,
+                productId = req.productId,
                 name = req.name!!,
                 price = req.price!!,
-                stock = req.stock!!
+                stock = req.stock!!,
+                categoryId = req.categoryId!!
             )
             repo.save(product)
         }
@@ -65,6 +61,5 @@ class ProductService(private val repo: ProductRepository) {
                 data = savedItem
             )
         )
-
     }
 }

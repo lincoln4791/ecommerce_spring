@@ -16,8 +16,9 @@ class ProductController(private val service: ProductService) {
     fun getAll(
         @RequestParam(defaultValue = "0") page: Int,
         @RequestParam(defaultValue = "10") size: Int,
-        @RequestParam(defaultValue = "id,asc") sort: String
-    ) = ResponseEntity.ok(service.getAll(page,size,sort))
+        @RequestParam(defaultValue = "id,asc") sort: String,
+        @RequestParam (required = false) categoryId: List<Long>?
+    ) = ResponseEntity.ok(service.getAll(page,size,sort,categoryId))
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")

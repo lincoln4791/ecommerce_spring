@@ -8,6 +8,9 @@ data class AddProductRequest(
     @field:NotNull(message = "Product ID is required")
     val productId: Long? = null,
 
+    @field:NotNull(message = "Category ID is required")
+    val categoryId: Long? = null,
+
     @field:NotBlank(message = "Product name is required")
     val name: String? = null,
 

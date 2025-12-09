@@ -9,6 +9,7 @@ data class Product(
     val id: Long = 0,
     @Column(unique = true, nullable = false, name = "product_id")
     val productId: Long,
+    val categoryId :Long,
     val name: String,
     var price: Double,
     var stock: Int
