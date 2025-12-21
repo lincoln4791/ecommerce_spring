@@ -1,6 +1,8 @@
 package com.lincoln4791.ecommerce.service
 
 import com.lincoln4791.ecommerce.model.entities.User
+import com.lincoln4791.ecommerce.model.entities.toLoginResponse
+import com.lincoln4791.ecommerce.model.entities.toSignUpResponse
 import com.lincoln4791.ecommerce.model.enums.ApiStatusEnum
 import com.lincoln4791.ecommerce.model.enums.RoleEnum
 import com.lincoln4791.ecommerce.model.requests.LoginRequest
@@ -39,19 +41,11 @@ class AuthService(
         )
         userRepo.save(user)
         val token = jwtUtils.generateToken(user)
-        val response = LoginResponse(
-            name = user.name,
-            phone = user.phone,
-            email = user.email,
-            token = token,
-            role = user.role,
-            refreshToken = null
-        )
         return ResponseEntity.ok(BaseResponse(
             status_code=200,
             message=ApiStatusEnum.Success.name,
             errors = null,
-            data =  response
+            data =  user.toSignUpResponse(token)
         ))
     }
 
@@ -78,32 +72,21 @@ class AuthService(
         val token = jwtUtils.generateToken(user)
         refreshTokenService.deleteByUserId(user.id)
         val refreshToken = refreshTokenService.createRefreshToken(userId = user.id)
-        val response = LoginResponse(
-            name = user.name,
-            phone = user.phone,
-            email = user.email,
-            token = token,
-            role = user.role,
-            refreshToken = refreshToken.token
-        )
+
 
         return ResponseEntity.ok(BaseResponse(
             status_code=200,
             message=ApiStatusEnum.Success.name,
             errors = null,
-            data =  response
+            data =  user.toLoginResponse(token,refreshToken.token)
         ))
 
     }
 
     fun refreshToken(request: Map<String, String>): BaseResponse<Any> {
-        val refreshToken = refreshTokenService.getByToken(request["refresh_token"]!!)
+        val refreshToken = refreshTokenService.getByToken(request[""]!!)
         refreshTokenService.verifyExpiration(refreshToken)
-
         val newAccessToken = jwtUtils.generateToken(refreshToken.user)
-
-        // Optional: generate new refresh token here (rotation)
-
         return BaseResponse(
             status_code = 200,
             message = ApiStatusEnum.Success.name,

@@ -12,7 +12,7 @@ CREATE TABLE brands (
 -- 2. Models Table
 -- ============================
 CREATE TABLE models (
-    model_id BIGSERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description VARCHAR(255),
     brand_id BIGINT NOT NULL,

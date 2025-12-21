@@ -13,7 +13,7 @@ class CartController(private val service: CartService) {
 
     @PostMapping("/add")
     fun addToCart(authentication: Authentication, @Valid @RequestBody req: AddToCartRequest) =
-        service.addToCart(authentication,req.productId, req.quantity)
+        service.addToCart(authentication,req.productId!!, req.quantity)
 
     @DeleteMapping("/removeItemFromCart")
     fun removeItemFromCart(

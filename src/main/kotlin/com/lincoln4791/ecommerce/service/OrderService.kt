@@ -2,6 +2,7 @@ package com.lincoln4791.ecommerce.service
 
 import com.lincoln4791.ecommerce.exceptions.OrderNotFoundException
 import com.lincoln4791.ecommerce.exceptions.OrderStatusNotFoundException
+import com.lincoln4791.ecommerce.exceptions.ProductNotFoundException
 import com.lincoln4791.ecommerce.exceptions.UniqueConstraintException
 import com.lincoln4791.ecommerce.model.entities.DeliveryTracking
 import com.lincoln4791.ecommerce.model.entities.Order
@@ -61,7 +62,7 @@ class OrderService(
 
             order.items.add(orderItem)
 
-            val product = productRepo.findByProductId(item.product.productId)
+            val product = productRepo.findById(item.product.id).orElseThrow { ProductNotFoundException("Product not found") }
             if (product != null) {
                 product.stock = product.stock - orderItem.quantity
                 productRepo.save(product)
@@ -126,8 +127,7 @@ class OrderService(
                     order.deliveryTrackingItems.add(trackingEvent)
                     orderRepo.save(order)
                     order.items.forEach {
-                        val prod = productRepo.findByProductId(it.product.productId)
-                            ?: throw RuntimeException("Product not found! productId=${it.product.productId}")
+                        val prod = productRepo.findById(it.product.id).orElseThrow { RuntimeException("Product not found! productId=${it.product.id}") }
 
                         prod.stock = prod.stock + it.quantity   // restore stock
                         productRepo.save(prod)

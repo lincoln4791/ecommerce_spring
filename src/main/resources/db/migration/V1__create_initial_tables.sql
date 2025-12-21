@@ -16,6 +16,18 @@ CREATE TABLE users (
     role VARCHAR(50) NOT NULL DEFAULT 'USER'
 );
 
+CREATE TABLE refresh_tokens (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL UNIQUE,
+    token VARCHAR(255) NOT NULL UNIQUE,
+    expiry_date TIMESTAMP NOT NULL,
+
+    CONSTRAINT fk_refresh_tokens_user
+        FOREIGN KEY (user_id)
+        REFERENCES users(id)
+        ON DELETE CASCADE
+);
+
 -- ORDERS TABLE
 CREATE TABLE orders (
     id BIGSERIAL PRIMARY KEY,

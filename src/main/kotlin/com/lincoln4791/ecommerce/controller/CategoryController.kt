@@ -1,0 +1,28 @@
+package com.lincoln4791.ecommerce.controller
+
+import com.lincoln4791.ecommerce.model.requests.AddCategoryRequest
+import com.lincoln4791.ecommerce.model.requests.AddProductRequest
+import com.lincoln4791.ecommerce.model.requests.ProductStatusUpdateRequest
+import com.lincoln4791.ecommerce.service.CategoryService
+import com.lincoln4791.ecommerce.service.ProductService
+import jakarta.validation.Valid
+import org.springframework.http.ResponseEntity
+import org.springframework.security.access.prepost.PreAuthorize
+import org.springframework.web.bind.annotation.*
+
+@RestController
+@RequestMapping("/category")
+class CategoryController(private val service: CategoryService) {
+
+    @GetMapping
+    fun getAll(
+        @RequestParam(defaultValue = "0") page: Int,
+        @RequestParam(defaultValue = "10") size: Int,
+        @RequestParam(defaultValue = "id,asc") sort: String,
+    ) = ResponseEntity.ok(service.getAll(page,size,sort))
+
+    @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    fun add(@Valid @RequestBody req: AddCategoryRequest) = service.add(req)
+
+}

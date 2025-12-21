@@ -70,10 +70,10 @@ class CartService(
         val user = userRepo.findByEmail(email)
             ?: throw UserNotFoundException("User Not Found")
 
-        val product = productRepo.findById(cartUpdateRequest.productId)
+        val product = productRepo.findById(cartUpdateRequest.id)
             .orElseThrow { ProductNotFoundException("Product not found") }
 
-        val cartItem = cartRepo.findByUserIdAndProductId(user.id, cartUpdateRequest.productId)
+        val cartItem = cartRepo.findByUserIdAndProductId(user.id, cartUpdateRequest.id)
             ?: throw EmptyCartException("Item not found in cart")
 
         when(cartUpdateRequest.action) {

@@ -1,14 +1,16 @@
 package com.lincoln4791.ecommerce.service
 
 import com.lincoln4791.ecommerce.exceptions.ProductNotFoundException
-import com.lincoln4791.ecommerce.model.entities.Product
+import com.lincoln4791.ecommerce.exceptions.UniqueConstraintException
+import com.lincoln4791.ecommerce.model.entities.Category
+import com.lincoln4791.ecommerce.model.entities.toCategoryResponse
 import com.lincoln4791.ecommerce.model.entities.toProductResponse
 import com.lincoln4791.ecommerce.model.enums.ApiStatusEnum
 import com.lincoln4791.ecommerce.model.enums.ProductStatusEnum
-import com.lincoln4791.ecommerce.model.requests.AddProductRequest
+import com.lincoln4791.ecommerce.model.requests.AddCategoryRequest
 import com.lincoln4791.ecommerce.model.requests.ProductStatusUpdateRequest
 import com.lincoln4791.ecommerce.model.responses.BaseResponse
-import com.lincoln4791.ecommerce.repository.ProductRepository
+import com.lincoln4791.ecommerce.repository.CategoryRepository
 import com.lincoln4791.ecommerce.utils.Utils.createPageable
 import com.lincoln4791.ecommerce.utils.toPageResponse
 import org.springframework.cache.annotation.CacheEvict
@@ -16,72 +18,44 @@ import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 
 @Service
-class ProductService(private val repo: ProductRepository) {
+class CategoryService(private val repo: CategoryRepository) {
 
-    //@Cacheable("product")
-    fun getAll(page: Int, size: Int, sort: String, categoryId: List<Long>?,brandId : List<Long>?): BaseResponse<Any> {
+    fun getAll(page: Int, size: Int, sort: String): BaseResponse<Any> {
         print("get from db")
         val pageable = createPageable(page, size, sort)
-        val pageResult =
-            if (categoryId == null && brandId == null) {
-                repo.findAll(pageable)
-            } else if (categoryId == null && brandId != null) {
-                repo.findAllByModel_Brand_IdIn(brandId, pageable)
-            }
-            else if (categoryId != null && brandId == null) {
-                repo.findAllByCategoryIdIn(categoryId, pageable)
-            }else {
-                repo.findAllByCategoryIdInAndModel_Brand_IdIn(categoryId!!,brandId!!, pageable)
-            }
+        val pageResult =  repo.findAll(pageable)
         return BaseResponse(
             status_code = 200,
             message = ApiStatusEnum.Success.name,
             errors = null,
-            data = pageResult.toPageResponse{it.toProductResponse()}
+            data = pageResult.toPageResponse{it.toCategoryResponse()}
         )
     }
 
-    //@CachePut(cacheNames = ["product"], key = "#product.id")
     @CacheEvict(value = ["product"], allEntries = true)
-    fun add(req: AddProductRequest): ResponseEntity<Any> {
-        val existing = repo.findById(req.productId!!).orElseThrow{ProductNotFoundException("Product Not Found")}
-
-        val savedItem = if (existing != null) {
-            val updated = existing.copy(
-                stock = existing.stock + req.stock!!,
-                price = req.price!!
+    fun add(req: AddCategoryRequest): ResponseEntity<Any> {
+        val existingCategory = repo.findByName(req.name!!)
+        if (existingCategory==null) {
+            val savedItem =  repo.save(Category(name = req.name, description = req.description))
+            return ResponseEntity.ok(
+                BaseResponse(
+                    status_code = 200,
+                    message = ApiStatusEnum.Success.name,
+                    errors = null,
+                    data = savedItem.toCategoryResponse()
+                )
             )
-            repo.save(updated)
-        } else {
-            val product = Product(
-                name = req.name!!,
-                price = req.price!!,
-                stock = req.stock!!,
-                categoryId = req.categoryId!!,
-                modelId = req.modelId!!,
-                productStatus = ProductStatusEnum.ACTIVE.name
-            )
-            repo.save(product)
+        }
+        else {
+            throw UniqueConstraintException("Category Already Exists")
         }
 
-        return ResponseEntity.ok(
-            BaseResponse(
-                status_code = 200,
-                message = ApiStatusEnum.Success.name,
-                errors = null,
-                data = savedItem.toProductResponse()
-            )
-        )
+
     }
 
-    fun delete(req: ProductStatusUpdateRequest): ResponseEntity<Any> {
+/*    fun delete(id: Long): ResponseEntity<Any> {
 
-        // Fetch all products
-        val products = repo.findAllById(req.productIds)
-
-        if (products.isEmpty()) {
-            throw ProductNotFoundException("No products found with given IDs")
-        }
+        val products = repo.findById(id).orElseThrow{ProductNotFoundException("Not Found")}
 
         // Soft delete each product
         products.forEach { product ->
@@ -99,9 +73,9 @@ class ProductService(private val repo: ProductRepository) {
                 data = products.map { it.toProductResponse() }
             )
         )
-    }
+    }*/
 
-    fun inactive(req: ProductStatusUpdateRequest): ResponseEntity<Any> {
+/*    fun inactive(req: ProductStatusUpdateRequest): ResponseEntity<Any> {
 
         // Fetch all products
         val products = repo.findAllById(req.productIds)
@@ -153,6 +127,6 @@ class ProductService(private val repo: ProductRepository) {
                 data = products.map { it.toProductResponse() }
             )
         )
-    }
+    }*/
 
 }

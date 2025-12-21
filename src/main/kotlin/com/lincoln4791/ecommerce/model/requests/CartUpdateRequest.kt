@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull
 
 data class CartUpdateRequest(
     @field:NotNull(message = "Product ID is required")
-    val productId: Long,
+    val id: Long,
 
     @field:NotBlank(message = "action is required")
     val action: String = CartUpdateEnum.ADD.name,
