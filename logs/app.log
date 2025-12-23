@@ -1,243 +1,37 @@
-2025-12-22T00:24:12.276+06:00  INFO 18500 --- [ecommerce] [main] c.l.ecommerce.EcommerceApplicationKt     : Starting EcommerceApplicationKt using Java 17.0.12 with PID 18500 (C:\another ssd\E Drive\Programming is life\SpringBoot\2nd phase\ecommerce\ecommerce\target\classes started by mahmu in C:\another ssd\E Drive\Programming is life\SpringBoot\2nd phase\ecommerce\ecommerce)
-2025-12-22T00:24:12.283+06:00 DEBUG 18500 --- [ecommerce] [main] c.l.ecommerce.EcommerceApplicationKt     : Running with Spring Boot v3.4.12, Spring v6.2.14
-2025-12-22T00:24:12.284+06:00  INFO 18500 --- [ecommerce] [main] c.l.ecommerce.EcommerceApplicationKt     : No active profile set, falling back to 1 default profile: "default"
-2025-12-22T00:24:14.759+06:00  INFO 18500 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-12-22T00:24:14.766+06:00  INFO 18500 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-12-22T00:24:15.172+06:00  INFO 18500 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 375 ms. Found 7 JPA repository interfaces.
-2025-12-22T00:24:15.209+06:00  INFO 18500 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-12-22T00:24:15.212+06:00  INFO 18500 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2025-12-22T00:24:15.280+06:00  INFO 18500 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.CartRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:24:15.281+06:00  INFO 18500 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.CategoryRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:24:15.281+06:00  INFO 18500 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.OrderItemRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:24:15.281+06:00  INFO 18500 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.OrderRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:24:15.281+06:00  INFO 18500 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:24:15.282+06:00  INFO 18500 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.RefreshTokenRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:24:15.282+06:00  INFO 18500 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:24:15.283+06:00  INFO 18500 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 0 Redis repository interfaces.
-2025-12-22T00:24:16.581+06:00  INFO 18500 --- [ecommerce] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-12-22T00:24:16.609+06:00  INFO 18500 --- [ecommerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-12-22T00:24:16.610+06:00  INFO 18500 --- [ecommerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.49]
-2025-12-22T00:24:16.736+06:00  INFO 18500 --- [ecommerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-12-22T00:24:16.737+06:00  INFO 18500 --- [ecommerce] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4370 ms
-2025-12-22T00:24:17.933+06:00  INFO 18500 --- [ecommerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-12-22T00:24:19.099+06:00 ERROR 18500 --- [ecommerce] [main] o.s.b.web.embedded.tomcat.TomcatStarter  : Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthFilter' defined in file [C:\another ssd\E Drive\Programming is life\SpringBoot\2nd phase\ecommerce\ecommerce\target\classes\com\lincoln4791\ecommerce\utils\authUtils\JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'customUserDetailsService' defined in file [C:\another ssd\E Drive\Programming is life\SpringBoot\2nd phase\ecommerce\ecommerce\target\classes\com\lincoln4791\ecommerce\utils\authUtils\CustomUserDetailsService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.lincoln4791.ecommerce.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
-2025-12-22T00:24:19.152+06:00  INFO 18500 --- [ecommerce] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2025-12-22T00:24:19.157+06:00  WARN 18500 --- [ecommerce] [main] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [lettuce-timer-3-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base@17.0.12/java.lang.Thread.sleep(Native Method)
- app//io.netty.util.HashedWheelTimer$Worker.waitForNextTick(HashedWheelTimer.java:598)
- app//io.netty.util.HashedWheelTimer$Worker.run(HashedWheelTimer.java:494)
- app//io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
- java.base@17.0.12/java.lang.Thread.run(Thread.java:840)
-2025-12-22T00:24:19.167+06:00  WARN 18500 --- [ecommerce] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server
-2025-12-22T00:24:19.218+06:00  INFO 18500 --- [ecommerce] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2025-12-22T00:24:19.270+06:00 ERROR 18500 --- [ecommerce] [main] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.context.ApplicationContextException: Unable to start web server
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:170) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-6.2.14.jar:6.2.14]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.4.12.jar:3.4.12]
-	at com.lincoln4791.ecommerce.EcommerceApplicationKt.main(EcommerceApplication.kt:15) ~[classes/:na]
-Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
-	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:147) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:107) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:517) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:219) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:193) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:167) ~[spring-boot-3.4.12.jar:3.4.12]
-	... 8 common frames omitted
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthFilter' defined in file [C:\another ssd\E Drive\Programming is life\SpringBoot\2nd phase\ecommerce\ecommerce\target\classes\com\lincoln4791\ecommerce\utils\authUtils\JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 1: Error creating bean with name 'customUserDetailsService' defined in file [C:\another ssd\E Drive\Programming is life\SpringBoot\2nd phase\ecommerce\ecommerce\target\classes\com\lincoln4791\ecommerce\utils\authUtils\CustomUserDetailsService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.lincoln4791.ecommerce.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:174) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:169) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:154) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:87) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:271) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:245) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52) ~[spring-boot-3.4.12.jar:3.4.12]
-	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:4452) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
-	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:770) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1201) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1191) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:81) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145) ~[na:na]
-	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:747) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:201) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:410) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:868) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:164) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:436) ~[tomcat-embed-core-10.1.49.jar:10.1.49]
-	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:128) ~[spring-boot-3.4.12.jar:3.4.12]
-	... 13 common frames omitted
-Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'customUserDetailsService' defined in file [C:\another ssd\E Drive\Programming is life\SpringBoot\2nd phase\ecommerce\ecommerce\target\classes\com\lincoln4791\ecommerce\utils\authUtils\CustomUserDetailsService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'userRepository' defined in com.lincoln4791.ecommerce.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-6.2.14.jar:6.2.14]
-	... 54 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userRepository' defined in com.lincoln4791.ecommerce.repository.UserRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaSharedEM_entityManagerFactory' while setting bean property 'entityManager'
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1725) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1474) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:606) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1770) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1653) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-6.2.14.jar:6.2.14]
-	... 68 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaSharedEM_entityManagerFactory': Cannot resolve reference to bean 'entityManagerFactory' while setting constructor argument
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:377) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:135) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:691) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:513) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1205) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365) ~[spring-beans-6.2.14.jar:6.2.14]
-	... 82 common frames omitted
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Unable to obtain connection from database: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-SQL State  : 08001
-Error Code : 0
-Message    : Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
-
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:365) ~[spring-beans-6.2.14.jar:6.2.14]
-	... 94 common frames omitted
-Caused by: org.flywaydb.core.internal.exception.FlywaySqlException: Unable to obtain connection from database: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-SQL State  : 08001
-Error Code : 0
-Message    : Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
-
-	at org.flywaydb.core.internal.jdbc.JdbcUtils.openConnection(JdbcUtils.java:71) ~[flyway-core-10.20.1.jar:na]
-	at org.flywaydb.core.internal.jdbc.JdbcConnectionFactory.<init>(JdbcConnectionFactory.java:76) ~[flyway-core-10.20.1.jar:na]
-	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:137) ~[flyway-core-10.20.1.jar:na]
-	at org.flywaydb.core.Flyway.migrate(Flyway.java:176) ~[flyway-core-10.20.1.jar:na]
-	at org.springframework.boot.autoconfigure.flyway.FlywayMigrationInitializer.afterPropertiesSet(FlywayMigrationInitializer.java:66) ~[spring-boot-autoconfigure-3.4.12.jar:3.4.12]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873) ~[spring-beans-6.2.14.jar:6.2.14]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822) ~[spring-beans-6.2.14.jar:6.2.14]
-	... 103 common frames omitted
-Caused by: org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
-	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:346) ~[postgresql-42.7.3.jar:42.7.3]
-	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:54) ~[postgresql-42.7.3.jar:42.7.3]
-	at org.postgresql.jdbc.PgConnection.<init>(PgConnection.java:273) ~[postgresql-42.7.3.jar:42.7.3]
-	at org.postgresql.Driver.makeConnection(Driver.java:446) ~[postgresql-42.7.3.jar:42.7.3]
-	at org.postgresql.Driver.connect(Driver.java:298) ~[postgresql-42.7.3.jar:42.7.3]
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-5.1.0.jar:na]
-	at org.flywaydb.core.internal.jdbc.JdbcUtils.openConnection(JdbcUtils.java:59) ~[flyway-core-10.20.1.jar:na]
-	... 109 common frames omitted
-Caused by: java.net.ConnectException: Connection refused: getsockopt
-	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
-	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602) ~[na:na]
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
-	at org.postgresql.core.PGStream.createSocket(PGStream.java:243) ~[postgresql-42.7.3.jar:42.7.3]
-	at org.postgresql.core.PGStream.<init>(PGStream.java:98) ~[postgresql-42.7.3.jar:42.7.3]
-	at org.postgresql.core.v3.ConnectionFactoryImpl.tryConnect(ConnectionFactoryImpl.java:136) ~[postgresql-42.7.3.jar:42.7.3]
-	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:262) ~[postgresql-42.7.3.jar:42.7.3]
-	... 121 common frames omitted
-
-2025-12-22T00:26:02.336+06:00  INFO 17144 --- [ecommerce] [main] c.l.ecommerce.EcommerceApplicationKt     : Starting EcommerceApplicationKt using Java 17.0.12 with PID 17144 (C:\another ssd\E Drive\Programming is life\SpringBoot\2nd phase\ecommerce\ecommerce\target\classes started by mahmu in C:\another ssd\E Drive\Programming is life\SpringBoot\2nd phase\ecommerce\ecommerce)
-2025-12-22T00:26:02.340+06:00 DEBUG 17144 --- [ecommerce] [main] c.l.ecommerce.EcommerceApplicationKt     : Running with Spring Boot v3.4.12, Spring v6.2.14
-2025-12-22T00:26:02.341+06:00  INFO 17144 --- [ecommerce] [main] c.l.ecommerce.EcommerceApplicationKt     : No active profile set, falling back to 1 default profile: "default"
-2025-12-22T00:26:03.758+06:00  INFO 17144 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-12-22T00:26:03.759+06:00  INFO 17144 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-12-22T00:26:03.957+06:00  INFO 17144 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 184 ms. Found 7 JPA repository interfaces.
-2025-12-22T00:26:03.988+06:00  INFO 17144 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
-2025-12-22T00:26:03.990+06:00  INFO 17144 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2025-12-22T00:26:04.050+06:00  INFO 17144 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.CartRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:26:04.051+06:00  INFO 17144 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.CategoryRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:26:04.051+06:00  INFO 17144 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.OrderItemRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:26:04.053+06:00  INFO 17144 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.OrderRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:26:04.054+06:00  INFO 17144 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:26:04.054+06:00  INFO 17144 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.RefreshTokenRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:26:04.054+06:00  INFO 17144 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
-2025-12-22T00:26:04.054+06:00  INFO 17144 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 0 Redis repository interfaces.
-2025-12-22T00:26:05.161+06:00  INFO 17144 --- [ecommerce] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2025-12-22T00:26:05.189+06:00  INFO 17144 --- [ecommerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2025-12-22T00:26:05.189+06:00  INFO 17144 --- [ecommerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.49]
-2025-12-22T00:26:05.286+06:00  INFO 17144 --- [ecommerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2025-12-22T00:26:05.288+06:00  INFO 17144 --- [ecommerce] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2863 ms
-2025-12-22T00:26:06.041+06:00  INFO 17144 --- [ecommerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2025-12-22T00:26:06.347+06:00  INFO 17144 --- [ecommerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@389008d1
-2025-12-22T00:26:06.349+06:00  INFO 17144 --- [ecommerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2025-12-22T00:26:06.395+06:00  INFO 17144 --- [ecommerce] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/ecommerce (PostgreSQL 16.11)
-2025-12-22T00:26:06.595+06:00  INFO 17144 --- [ecommerce] [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:00.141s)
-2025-12-22T00:26:06.627+06:00  INFO 17144 --- [ecommerce] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 6
-2025-12-22T00:26:06.635+06:00  INFO 17144 --- [ecommerce] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
-2025-12-22T00:26:06.784+06:00  INFO 17144 --- [ecommerce] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-12-22T00:26:06.869+06:00  INFO 17144 --- [ecommerce] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.36.Final
-2025-12-22T00:26:06.923+06:00  INFO 17144 --- [ecommerce] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-12-22T00:26:07.303+06:00  INFO 17144 --- [ecommerce] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-12-22T00:26:07.460+06:00  WARN 17144 --- [ecommerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-12-22T00:26:07.508+06:00  INFO 17144 --- [ecommerce] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-12-24T00:36:24.006+06:00  INFO 14008 --- [ecommerce] [main] c.l.ecommerce.EcommerceApplicationKt     : Starting EcommerceApplicationKt using Java 17.0.12 with PID 14008 (C:\another ssd\E Drive\Programming is life\SpringBoot\2nd phase\ecommerce\ecommerce\target\classes started by mahmu in C:\another ssd\E Drive\Programming is life\SpringBoot\2nd phase\ecommerce\ecommerce)
+2025-12-24T00:36:24.017+06:00 DEBUG 14008 --- [ecommerce] [main] c.l.ecommerce.EcommerceApplicationKt     : Running with Spring Boot v3.4.12, Spring v6.2.14
+2025-12-24T00:36:24.018+06:00  INFO 14008 --- [ecommerce] [main] c.l.ecommerce.EcommerceApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2025-12-24T00:36:25.377+06:00  INFO 14008 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-12-24T00:36:25.380+06:00  INFO 14008 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-24T00:36:25.577+06:00  INFO 14008 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 185 ms. Found 7 JPA repository interfaces.
+2025-12-24T00:36:25.605+06:00  INFO 14008 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-12-24T00:36:25.606+06:00  INFO 14008 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-12-24T00:36:25.640+06:00  INFO 14008 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.CartRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-12-24T00:36:25.640+06:00  INFO 14008 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.CategoryRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-12-24T00:36:25.641+06:00  INFO 14008 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.OrderItemRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-12-24T00:36:25.641+06:00  INFO 14008 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.OrderRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-12-24T00:36:25.641+06:00  INFO 14008 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.ProductRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-12-24T00:36:25.642+06:00  INFO 14008 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.RefreshTokenRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-12-24T00:36:25.642+06:00  INFO 14008 --- [ecommerce] [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.lincoln4791.ecommerce.repository.UserRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository
+2025-12-24T00:36:25.642+06:00  INFO 14008 --- [ecommerce] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2025-12-24T00:36:26.507+06:00  INFO 14008 --- [ecommerce] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-12-24T00:36:26.523+06:00  INFO 14008 --- [ecommerce] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-24T00:36:26.524+06:00  INFO 14008 --- [ecommerce] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.49]
+2025-12-24T00:36:26.609+06:00  INFO 14008 --- [ecommerce] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-24T00:36:26.609+06:00  INFO 14008 --- [ecommerce] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2498 ms
+2025-12-24T00:36:27.268+06:00  INFO 14008 --- [ecommerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-24T00:36:27.506+06:00  INFO 14008 --- [ecommerce] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@718f3088
+2025-12-24T00:36:27.508+06:00  INFO 14008 --- [ecommerce] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-24T00:36:27.552+06:00  INFO 14008 --- [ecommerce] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:postgresql://localhost:5432/ecommerce (PostgreSQL 16.11)
+2025-12-24T00:36:27.661+06:00  INFO 14008 --- [ecommerce] [main] o.f.core.internal.command.DbValidate     : Successfully validated 6 migrations (execution time 00:00.052s)
+2025-12-24T00:36:27.692+06:00  INFO 14008 --- [ecommerce] [main] o.f.core.internal.command.DbMigrate      : Current version of schema "public": 6
+2025-12-24T00:36:27.699+06:00  INFO 14008 --- [ecommerce] [main] o.f.core.internal.command.DbMigrate      : Schema "public" is up to date. No migration necessary.
+2025-12-24T00:36:27.863+06:00  INFO 14008 --- [ecommerce] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-24T00:36:27.952+06:00  INFO 14008 --- [ecommerce] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.36.Final
+2025-12-24T00:36:28.010+06:00  INFO 14008 --- [ecommerce] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-24T00:36:28.331+06:00  INFO 14008 --- [ecommerce] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-24T00:36:28.391+06:00  WARN 14008 --- [ecommerce] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-24T00:36:28.415+06:00  INFO 14008 --- [ecommerce] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 16.11
@@ -245,70 +39,39 @@ Caused by: java.net.ConnectException: Connection refused: getsockopt
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-12-22T00:26:08.873+06:00  INFO 17144 --- [ecommerce] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-12-22T00:26:08.876+06:00  INFO 17144 --- [ecommerce] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-12-22T00:26:09.760+06:00 DEBUG 17144 --- [ecommerce] [main] c.l.e.utils.authUtils.JwtAuthFilter      : Filter 'jwtAuthFilter' configured for use
-2025-12-22T00:26:10.402+06:00  WARN 17144 --- [ecommerce] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-12-22T00:26:10.469+06:00  INFO 17144 --- [ecommerce] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2025-12-22T00:26:10.470+06:00  WARN 17144 --- [ecommerce] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
-2025-12-22T00:26:10.747+06:00 DEBUG 17144 --- [ecommerce] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 23 mappings in 'requestMappingHandlerMapping'
-2025-12-22T00:26:10.897+06:00 DEBUG 17144 --- [ecommerce] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2025-12-22T00:26:10.997+06:00 DEBUG 17144 --- [ecommerce] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtAuthFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
-2025-12-22T00:26:11.152+06:00 DEBUG 17144 --- [ecommerce] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2025-12-22T00:26:11.261+06:00 DEBUG 17144 --- [ecommerce] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
-2025-12-22T00:26:11.715+06:00  INFO 17144 --- [ecommerce] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2025-12-22T00:26:11.733+06:00  INFO 17144 --- [ecommerce] [main] c.l.ecommerce.EcommerceApplicationKt     : Started EcommerceApplicationKt in 10.205 seconds (process running for 10.69)
-2025-12-22T00:28:11.886+06:00  INFO 17144 --- [ecommerce] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-12-22T00:28:11.887+06:00  INFO 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2025-12-22T00:28:11.887+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
-2025-12-22T00:28:11.887+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
-2025-12-22T00:28:11.887+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
-2025-12-22T00:28:11.888+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@46ebfc09
-2025-12-22T00:28:11.888+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@ced7e4a
-2025-12-22T00:28:11.890+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
-2025-12-22T00:28:11.890+06:00  INFO 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-2025-12-22T00:28:11.912+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /profile/edit
-2025-12-22T00:28:12.208+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /profile/edit
-2025-12-22T00:28:12.209+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/profile/edit", parameters={}
-2025-12-22T00:28:12.211+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.lincoln4791.ecommerce.controller.ProfileController#editProfile(Authentication, EditProfileRequest)
-2025-12-22T00:28:12.257+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [EditProfileRequest(name=null, phone=0160000000)]
-2025-12-22T00:28:12.326+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-12-22T00:28:12.329+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [BaseResponse(status_code=200, message=Success, errors=null, data=ProfileResponse(name=test user, pho (truncated)...]
-2025-12-22T00:28:12.456+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-12-22T00:28:23.477+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /profile/edit
-2025-12-22T00:28:23.487+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /profile/edit
-2025-12-22T00:28:23.487+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/profile/edit", parameters={}
-2025-12-22T00:28:23.487+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.lincoln4791.ecommerce.controller.ProfileController#editProfile(Authentication, EditProfileRequest)
-2025-12-22T00:28:23.488+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [EditProfileRequest(name=null, phone=0160000000)]
-2025-12-22T00:28:23.496+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-12-22T00:28:23.497+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [BaseResponse(status_code=200, message=Success, errors=null, data=ProfileResponse(name=test user, pho (truncated)...]
-2025-12-22T00:28:23.498+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-12-22T00:28:38.609+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /profile/edit
-2025-12-22T00:28:38.618+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /profile/edit
-2025-12-22T00:28:38.618+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : POST "/profile/edit", parameters={}
-2025-12-22T00:28:38.618+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.lincoln4791.ecommerce.controller.ProfileController#editProfile(Authentication, EditProfileRequest)
-2025-12-22T00:28:38.619+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [EditProfileRequest(name=0160000000, phone=null)]
-2025-12-22T00:28:38.657+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-12-22T00:28:38.657+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-5] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [BaseResponse(status_code=200, message=Success, errors=null, data=ProfileResponse(name=0160000000, ph (truncated)...]
-2025-12-22T00:28:38.658+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-12-22T00:28:45.249+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Securing POST /profile/edit
-2025-12-22T00:28:45.257+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-4] o.s.security.web.FilterChainProxy        : Secured POST /profile/edit
-2025-12-22T00:28:45.257+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : POST "/profile/edit", parameters={}
-2025-12-22T00:28:45.257+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.lincoln4791.ecommerce.controller.ProfileController#editProfile(Authentication, EditProfileRequest)
-2025-12-22T00:28:45.258+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [EditProfileRequest(name=test user, phone=null)]
-2025-12-22T00:28:45.273+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-12-22T00:28:45.273+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [BaseResponse(status_code=200, message=Success, errors=null, data=ProfileResponse(name=test user, pho (truncated)...]
-2025-12-22T00:28:45.274+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-12-22T00:28:47.051+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Securing POST /profile/edit
-2025-12-22T00:28:47.059+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-8] o.s.security.web.FilterChainProxy        : Secured POST /profile/edit
-2025-12-22T00:28:47.059+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : POST "/profile/edit", parameters={}
-2025-12-22T00:28:47.059+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.lincoln4791.ecommerce.controller.ProfileController#editProfile(Authentication, EditProfileRequest)
-2025-12-22T00:28:47.060+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [EditProfileRequest(name=test user, phone=null)]
-2025-12-22T00:28:47.065+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
-2025-12-22T00:28:47.065+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-8] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [BaseResponse(status_code=200, message=Success, errors=null, data=ProfileResponse(name=test user, pho (truncated)...]
-2025-12-22T00:28:47.066+06:00 DEBUG 17144 --- [ecommerce] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
-2025-12-22T00:29:57.476+06:00  INFO 17144 --- [ecommerce] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2025-12-22T00:29:57.695+06:00  INFO 17144 --- [ecommerce] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2025-12-22T00:29:57.704+06:00  INFO 17144 --- [ecommerce] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-12-22T00:29:57.707+06:00  INFO 17144 --- [ecommerce] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2025-12-22T00:29:57.709+06:00  INFO 17144 --- [ecommerce] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-24T00:36:29.373+06:00  INFO 14008 --- [ecommerce] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-24T00:36:29.376+06:00  INFO 14008 --- [ecommerce] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-24T00:36:29.861+06:00 DEBUG 14008 --- [ecommerce] [main] c.l.e.utils.authUtils.JwtAuthFilter      : Filter 'jwtAuthFilter' configured for use
+2025-12-24T00:36:30.233+06:00  WARN 14008 --- [ecommerce] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-12-24T00:36:30.268+06:00  INFO 14008 --- [ecommerce] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-12-24T00:36:30.269+06:00  WARN 14008 --- [ecommerce] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-12-24T00:36:30.452+06:00 DEBUG 14008 --- [ecommerce] [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 23 mappings in 'requestMappingHandlerMapping'
+2025-12-24T00:36:30.574+06:00 DEBUG 14008 --- [ecommerce] [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-12-24T00:36:30.645+06:00 DEBUG 14008 --- [ecommerce] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, LogoutFilter, JwtAuthFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-12-24T00:36:30.757+06:00 DEBUG 14008 --- [ecommerce] [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-12-24T00:36:30.830+06:00 DEBUG 14008 --- [ecommerce] [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-12-24T00:36:31.098+06:00  INFO 14008 --- [ecommerce] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-12-24T00:36:31.109+06:00  INFO 14008 --- [ecommerce] [main] c.l.ecommerce.EcommerceApplicationKt     : Started EcommerceApplicationKt in 7.739 seconds (process running for 8.332)
+2025-12-24T00:38:24.834+06:00  INFO 14008 --- [ecommerce] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-24T00:38:24.835+06:00  INFO 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-24T00:38:24.835+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2025-12-24T00:38:24.835+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2025-12-24T00:38:24.835+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2025-12-24T00:38:24.836+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@21f41593
+2025-12-24T00:38:24.837+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@af27e00
+2025-12-24T00:38:24.837+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-12-24T00:38:24.837+06:00  INFO 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-12-24T00:38:24.851+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /products
+2025-12-24T00:38:25.077+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /products
+2025-12-24T00:38:25.079+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/products", parameters={}
+2025-12-24T00:38:25.082+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.lincoln4791.ecommerce.controller.ProductController#getAll(int, int, String, List, List)
+2025-12-24T00:38:25.263+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-12-24T00:38:25.275+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [BaseResponse(status_code=200, message=Success, errors=null, data=PageResponse(items=[ProductResponse (truncated)...]
+2025-12-24T00:38:25.315+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-12-24T00:38:45.285+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /products
+2025-12-24T00:38:45.294+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /products
+2025-12-24T00:38:45.294+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/products", parameters={}
+2025-12-24T00:38:45.294+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.lincoln4791.ecommerce.controller.ProductController#getAll(int, int, String, List, List)
+2025-12-24T00:38:45.345+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-12-24T00:38:45.346+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [BaseResponse(status_code=200, message=Success, errors=null, data=PageResponse(items=[ProductResponse (truncated)...]
+2025-12-24T00:38:45.348+06:00 DEBUG 14008 --- [ecommerce] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK

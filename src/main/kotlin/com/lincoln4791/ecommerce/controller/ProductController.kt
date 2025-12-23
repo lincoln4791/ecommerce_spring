@@ -15,7 +15,7 @@ class ProductController(private val service: ProductService) {
     @GetMapping
     fun getAll(
         @RequestParam(defaultValue = "0") page: Int,
-        @RequestParam(defaultValue = "10") size: Int,
+        @RequestParam(defaultValue = "1000") size: Int,
         @RequestParam(defaultValue = "id,asc") sort: String,
         @RequestParam (required = false) categoryId: List<Long>?,
         @RequestParam (required = false) brandId: List<Long>?
