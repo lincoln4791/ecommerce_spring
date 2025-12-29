@@ -4,9 +4,11 @@ import com.lincoln4791.ecommerce.exceptions.EmptyCartException
 import com.lincoln4791.ecommerce.exceptions.ProductNotFoundException
 import com.lincoln4791.ecommerce.exceptions.UserNotFoundException
 import com.lincoln4791.ecommerce.model.entities.Cart
+import com.lincoln4791.ecommerce.model.entities.toCartResponse
 import com.lincoln4791.ecommerce.model.enums.ApiStatusEnum
 import com.lincoln4791.ecommerce.model.enums.CartUpdateEnum
-import com.lincoln4791.ecommerce.model.requests.CartUpdateRequest
+import com.lincoln4791.ecommerce.model.requests.cart.CartBulkUpdateRequest
+import com.lincoln4791.ecommerce.model.requests.cart.CartUpdateRequest
 import com.lincoln4791.ecommerce.model.responses.BaseResponse
 import com.lincoln4791.ecommerce.repository.CartRepository
 import com.lincoln4791.ecommerce.repository.ProductRepository
@@ -55,7 +57,7 @@ class CartService(
                 status_code = 200,
                 message = ApiStatusEnum.Success.name,
                 errors = null,
-                data = savedItem
+                data = savedItem.toCartResponse()
             )
         )
     }
@@ -98,7 +100,7 @@ class CartService(
                 status_code = 200,
                 message = ApiStatusEnum.Success.name,
                 errors = null,
-                data = cartItem
+                data = cartItem.toCartResponse()
             )
         )
     }
@@ -121,8 +123,52 @@ class CartService(
             status_code=200,
             message= ApiStatusEnum.Success.name,
             errors = null,
-            data =  items
+            data =  items.map {
+                it.toCartResponse()
+            }.toList()
         ))
 
     }
+
+    fun updateCartBulk(
+        authentication: Authentication,
+        request: CartBulkUpdateRequest
+    ): ResponseEntity<Any> {
+
+        val user = userRepo.findByEmail(authentication.name)
+            ?: throw UserNotFoundException("User Not Found")
+
+        if (request.items.isEmpty()) {
+            throw IllegalArgumentException("Cart update list cannot be empty")
+        }
+
+        val updatedItems = mutableListOf<Cart>()
+
+        request.items.forEach { item ->
+
+//            val product = productRepo.findById(item.productId)
+//                .orElseThrow { ProductNotFoundException("Product not found") }
+
+            val cartItem = cartRepo.findByUserIdAndProductId(user.id, item.productId)
+                ?: throw EmptyCartException("Product not found in cart")
+
+            if (item.quantity <= 0) {
+                cartRepo.delete(cartItem)
+            } else {
+                cartItem.quantity = item.quantity
+                updatedItems.add(cartRepo.save(cartItem))
+            }
+        }
+
+        return ResponseEntity.ok(
+            BaseResponse(
+                status_code = 200,
+                message = ApiStatusEnum.Success.name,
+                errors = null,
+                data = updatedItems.map { it.toCartResponse() }
+            )
+        )
+    }
+
+
 }

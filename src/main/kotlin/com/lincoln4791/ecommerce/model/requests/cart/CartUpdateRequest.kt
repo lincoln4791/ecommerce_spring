@@ -1,4 +1,4 @@
-package com.lincoln4791.ecommerce.model.requests
+package com.lincoln4791.ecommerce.model.requests.cart
 
 import com.lincoln4791.ecommerce.model.enums.CartUpdateEnum
 import jakarta.validation.constraints.Min

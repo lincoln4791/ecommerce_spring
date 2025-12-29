@@ -1,5 +1,6 @@
 package com.lincoln4791.ecommerce.model.entities
 
+import com.lincoln4791.ecommerce.model.responses.CartResponse
 import jakarta.persistence.*
 
 @Entity
@@ -16,3 +17,13 @@ data class Cart(
 
     var quantity: Int
 )
+
+
+fun Cart.toCartResponse() : CartResponse{
+    return CartResponse(
+        id,
+        userId,
+        product.toProductResponse(),
+        quantity
+    )
+}

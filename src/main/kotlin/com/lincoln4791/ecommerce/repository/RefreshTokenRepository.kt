@@ -7,7 +7,6 @@ import org.springframework.transaction.annotation.Transactional
 
 @Repository
 interface RefreshTokenRepository : JpaRepository<RefreshToken, Long> {
-
     fun findByToken(token: String): RefreshToken?
     @Transactional
     fun deleteByUserId(userId: Long)

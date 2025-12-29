@@ -1,5 +1,6 @@
 package com.lincoln4791.ecommerce.service
 
+import com.lincoln4791.ecommerce.exceptions.Unauthorized
 import com.lincoln4791.ecommerce.model.entities.User
 import com.lincoln4791.ecommerce.model.entities.toLoginResponse
 import com.lincoln4791.ecommerce.model.entities.toSignUpResponse
@@ -84,7 +85,7 @@ class AuthService(
     }
 
     fun refreshToken(request: Map<String, String>): BaseResponse<Any> {
-        val refreshToken = refreshTokenService.getByToken(request[""]!!)
+        val refreshToken = refreshTokenService.getByToken(request["refresh_token"]!!)
         refreshTokenService.verifyExpiration(refreshToken)
         val newAccessToken = jwtUtils.generateToken(refreshToken.user)
         return BaseResponse(
