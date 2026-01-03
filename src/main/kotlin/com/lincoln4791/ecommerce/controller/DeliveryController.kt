@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/delivery")
 class DeliveryController(private val service: OrderService) {
 
-    @PostMapping("/place")
+/*    @PostMapping("/place")
     fun placeOrder(authentication: Authentication) = service.placeOrder(authentication)
 
 
     @GetMapping("/orders")
-    fun getMyOrders(authentication: Authentication): ResponseEntity<Any> = service.getMyOrders(authentication)
+    fun getMyOrders(authentication: Authentication): ResponseEntity<Any> = service.getMyOrders(authentication)*/
 
 }

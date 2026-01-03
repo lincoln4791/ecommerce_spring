@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/order")
 class OrderController(private val service: OrderService) {
 
-    @PostMapping("/place")
+    @PostMapping("/placeFromCart")
     fun placeOrder(authentication: Authentication) = service.placeOrder(authentication)
 
 

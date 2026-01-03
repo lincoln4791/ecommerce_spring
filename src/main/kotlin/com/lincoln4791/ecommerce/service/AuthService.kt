@@ -8,8 +8,8 @@ import com.lincoln4791.ecommerce.model.enums.ApiStatusEnum
 import com.lincoln4791.ecommerce.model.enums.RoleEnum
 import com.lincoln4791.ecommerce.model.requests.LoginRequest
 import com.lincoln4791.ecommerce.model.requests.SignupRequest
-import com.lincoln4791.ecommerce.model.responses.BaseResponse
-import com.lincoln4791.ecommerce.model.responses.LoginResponse
+import com.lincoln4791.ecommerce.model.responses.brand.BaseResponse
+import com.lincoln4791.ecommerce.model.responses.auth.LoginResponse
 import com.lincoln4791.ecommerce.repository.UserRepository
 import com.lincoln4791.ecommerce.utils.authUtils.JwtUtils
 import org.springframework.http.ResponseEntity

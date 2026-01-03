@@ -7,11 +7,12 @@ import com.lincoln4791.ecommerce.exceptions.UniqueConstraintException
 import com.lincoln4791.ecommerce.model.entities.DeliveryTracking
 import com.lincoln4791.ecommerce.model.entities.Order
 import com.lincoln4791.ecommerce.model.entities.OrderItem
+import com.lincoln4791.ecommerce.model.entities.toOrderResponse
 import com.lincoln4791.ecommerce.model.enums.ApiStatusEnum
 import com.lincoln4791.ecommerce.model.enums.OrderStatusEnum
 import com.lincoln4791.ecommerce.model.enums.PaymentMethodEnum
 import com.lincoln4791.ecommerce.model.requests.UpdateDeliveryStatusRequest
-import com.lincoln4791.ecommerce.model.responses.BaseResponse
+import com.lincoln4791.ecommerce.model.responses.brand.BaseResponse
 import com.lincoln4791.ecommerce.repository.*
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.http.ResponseEntity
@@ -77,7 +78,7 @@ class OrderService(
 
         // 5️⃣ Return the saved order with items populated
         return ResponseEntity.ok(
-            BaseResponse(200, ApiStatusEnum.Success.name, null, savedOrder)
+            BaseResponse(200, ApiStatusEnum.Success.name, null, savedOrder.toOrderResponse())
         )
     }
 
@@ -92,7 +93,7 @@ class OrderService(
                 status_code = 200,
                 message = ApiStatusEnum.Success.name,
                 errors = null,
-                data = items
+                data = items.map { it.toOrderResponse() }.toList()
             )
         )
     }
@@ -169,11 +170,5 @@ class OrderService(
         else{
             throw OrderStatusNotFoundException("Order Status ${updateDeliveryStatusRequest.status} is Invalid")
         }
-
-
-
-
     }
-
-
 }

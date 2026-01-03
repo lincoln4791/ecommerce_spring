@@ -9,7 +9,7 @@ import com.lincoln4791.ecommerce.model.enums.ApiStatusEnum
 import com.lincoln4791.ecommerce.model.enums.CartUpdateEnum
 import com.lincoln4791.ecommerce.model.requests.cart.CartBulkUpdateRequest
 import com.lincoln4791.ecommerce.model.requests.cart.CartUpdateRequest
-import com.lincoln4791.ecommerce.model.responses.BaseResponse
+import com.lincoln4791.ecommerce.model.responses.brand.BaseResponse
 import com.lincoln4791.ecommerce.repository.CartRepository
 import com.lincoln4791.ecommerce.repository.ProductRepository
 import com.lincoln4791.ecommerce.repository.UserRepository

@@ -1,6 +1,6 @@
 package com.lincoln4791.ecommerce.model.entities
 
-import com.lincoln4791.ecommerce.model.responses.CartResponse
+import com.lincoln4791.ecommerce.model.responses.cart.CartResponse
 import jakarta.persistence.*
 
 @Entity

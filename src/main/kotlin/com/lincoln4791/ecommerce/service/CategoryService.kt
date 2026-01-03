@@ -9,7 +9,7 @@ import com.lincoln4791.ecommerce.model.enums.ApiStatusEnum
 import com.lincoln4791.ecommerce.model.enums.ProductStatusEnum
 import com.lincoln4791.ecommerce.model.requests.AddCategoryRequest
 import com.lincoln4791.ecommerce.model.requests.ProductStatusUpdateRequest
-import com.lincoln4791.ecommerce.model.responses.BaseResponse
+import com.lincoln4791.ecommerce.model.responses.brand.BaseResponse
 import com.lincoln4791.ecommerce.repository.CategoryRepository
 import com.lincoln4791.ecommerce.utils.Utils.createPageable
 import com.lincoln4791.ecommerce.utils.toPageResponse

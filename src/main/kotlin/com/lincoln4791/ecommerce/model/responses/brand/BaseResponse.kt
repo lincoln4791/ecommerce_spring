@@ -1,4 +1,4 @@
-package com.lincoln4791.ecommerce.model.responses
+package com.lincoln4791.ecommerce.model.responses.brand
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty

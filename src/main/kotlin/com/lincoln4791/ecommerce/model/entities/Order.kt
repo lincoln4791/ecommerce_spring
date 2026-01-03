@@ -3,6 +3,7 @@ package com.lincoln4791.ecommerce.model.entities
 import com.fasterxml.jackson.annotation.JsonManagedReference
 import com.lincoln4791.ecommerce.model.enums.OrderStatusEnum
 import com.lincoln4791.ecommerce.model.enums.PaymentMethodEnum
+import com.lincoln4791.ecommerce.model.responses.order.OrderResponse
 import jakarta.persistence.*
 
 @Entity
@@ -23,3 +24,9 @@ data class Order(
     var deliveryStatus: String=OrderStatusEnum.Pending.name,
     val paymentMethod: String=PaymentMethodEnum.COD.name,
 )
+
+fun Order.toOrderResponse() : OrderResponse{
+    return OrderResponse(
+        id,userId,totalAmount,items.map { it.toOrderItemResponse() }.toMutableList(),deliveryStatus,paymentMethod
+    )
+}

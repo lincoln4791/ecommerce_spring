@@ -1,9 +1,9 @@
 package com.lincoln4791.ecommerce.model.entities
 
 import com.lincoln4791.ecommerce.model.enums.RoleEnum
-import com.lincoln4791.ecommerce.model.responses.LoginResponse
+import com.lincoln4791.ecommerce.model.responses.auth.LoginResponse
 import com.lincoln4791.ecommerce.model.responses.ProfileResponse
-import com.lincoln4791.ecommerce.model.responses.SignUpResponse
+import com.lincoln4791.ecommerce.model.responses.auth.SignUpResponse
 import jakarta.persistence.*
 
 @Entity

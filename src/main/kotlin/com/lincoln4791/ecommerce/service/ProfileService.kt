@@ -3,7 +3,7 @@ package com.lincoln4791.ecommerce.service
 import com.lincoln4791.ecommerce.model.entities.toProfileResponse
 import com.lincoln4791.ecommerce.model.enums.ApiStatusEnum
 import com.lincoln4791.ecommerce.model.requests.EditProfileRequest
-import com.lincoln4791.ecommerce.model.responses.BaseResponse
+import com.lincoln4791.ecommerce.model.responses.brand.BaseResponse
 import com.lincoln4791.ecommerce.repository.UserRepository
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.Authentication

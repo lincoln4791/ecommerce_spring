@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/orderedItem")
 class OrderItemController(private val service: OrderService) {
 
-    @GetMapping("/items")
-    fun getMyOrders(authentication: Authentication): ResponseEntity<Any> = service.getMyOrders(authentication)
+/*    @GetMapping("/items")
+    fun getMyOrders(authentication: Authentication): ResponseEntity<Any> = service.getMyOrders(authentication)*/
 
 }

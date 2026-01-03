@@ -2,6 +2,7 @@ package com.lincoln4791.ecommerce.model.entities
 
 import com.fasterxml.jackson.annotation.JsonBackReference
 import com.lincoln4791.ecommerce.model.enums.OrderStatusEnum
+import com.lincoln4791.ecommerce.model.responses.delivery.DeliveryTrackingResponse
 import jakarta.persistence.*
 
 @Entity
@@ -17,4 +18,13 @@ data class DeliveryTracking(
     val timestamp: Long = System.currentTimeMillis()
 ){
 
+}
+
+
+fun DeliveryTracking.toDeliveryTrackingResponse() : DeliveryTrackingResponse{
+    return DeliveryTrackingResponse(
+        id = id,
+        status = status,
+        timestamp = timestamp
+    )
 }

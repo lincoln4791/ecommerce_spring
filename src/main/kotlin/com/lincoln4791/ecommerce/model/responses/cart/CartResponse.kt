@@ -1,6 +1,6 @@
-package com.lincoln4791.ecommerce.model.responses
+package com.lincoln4791.ecommerce.model.responses.cart
 
-import com.lincoln4791.ecommerce.model.entities.Product
+import com.lincoln4791.ecommerce.model.responses.product.ProductResponse
 
 data class CartResponse(
     val id: Long = 0,

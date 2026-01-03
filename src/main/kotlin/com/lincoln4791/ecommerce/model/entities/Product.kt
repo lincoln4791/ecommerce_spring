@@ -1,7 +1,7 @@
 package com.lincoln4791.ecommerce.model.entities
 
 import com.lincoln4791.ecommerce.model.enums.ProductStatusEnum
-import com.lincoln4791.ecommerce.model.responses.ProductResponse
+import com.lincoln4791.ecommerce.model.responses.product.ProductResponse
 import jakarta.persistence.*
 
 @Entity

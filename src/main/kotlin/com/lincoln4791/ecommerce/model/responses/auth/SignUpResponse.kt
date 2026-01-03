@@ -1,4 +1,4 @@
-package com.lincoln4791.ecommerce.model.responses
+package com.lincoln4791.ecommerce.model.responses.auth
 
 import com.lincoln4791.ecommerce.model.enums.RoleEnum
 
@@ -7,5 +7,5 @@ data class SignUpResponse(
     val phone : String,
     val email: String,
     val token: String,
-    val role :RoleEnum?
+    val role : RoleEnum?
 )

@@ -1,7 +1,7 @@
 package com.lincoln4791.ecommerce.model.entities
 
-import com.lincoln4791.ecommerce.model.responses.BrandResponse
-import com.lincoln4791.ecommerce.model.responses.CategoryResponse
+import com.lincoln4791.ecommerce.model.responses.brand.BrandResponse
+import com.lincoln4791.ecommerce.model.responses.category.CategoryResponse
 import jakarta.persistence.*
 
 @Entity

@@ -1,6 +1,7 @@
 package com.lincoln4791.ecommerce.model.entities
 
 import com.fasterxml.jackson.annotation.JsonBackReference
+import com.lincoln4791.ecommerce.model.responses.order.OrderItemResponse
 import jakarta.persistence.*
 
 @Entity
@@ -22,3 +23,13 @@ data class OrderItem(
 
     val price: Double
 )
+
+
+fun OrderItem.toOrderItemResponse() : OrderItemResponse{
+    return OrderItemResponse(
+        id = id,
+        product = product.toProductResponse(),
+        quantity = quantity,
+        price = price
+    )
+}
